@@ -14,7 +14,10 @@ export default function CategoryCard(props : CardOptions) {
             style={[{
                 fontWeight:'bold',
                 color : props?.active ? "#000" : "#999",
-                backgroundColor : props?.active ? "#eee" : "#fff"
+                backgroundColor : props?.active ? "#eee" : "#fff",
+                paddingHorizontal : 15,
+                paddingVertical : 5,
+                borderRadius:15
             }, props?.style]}
         >
             <Text>{props?.title}</Text>

@@ -1,8 +1,9 @@
-import { View, Text, Image, StyleProp, ViewStyle } from 'react-native'
+import { View, Text, StyleProp, ViewStyle } from 'react-native'
 import React from 'react'
+import CustomImage from '../CustomImage';
 
 interface CardProps {
-    id: number;
+    id?: number;
     title: string;
     description?: string;
     image: string;
@@ -17,14 +18,12 @@ export default function ListCard(props: CardProps) {
             width : "100%",
             overflow:'hidden'
         }, props?.style]}>
-            <Image
-                source={{
-                    uri: props?.image
-                }}
+            <CustomImage
+                url={props?.image}
                 style={{
-                    height: 80,
+                    height: 90,
                     width: 100,
-                    borderRadius: 6
+                    borderRadius: 15
                 }}
             />
 

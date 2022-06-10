@@ -18,7 +18,9 @@ export default function Header() {
             padding: 10,
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            backgroundColor:"#fff",
+            zIndex : 999999
         }}>
             <View style={{
                 flexDirection: 'row',

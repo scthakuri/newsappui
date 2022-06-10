@@ -2,7 +2,7 @@ import { StyleSheet, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
 
 interface CardProps {
-    id: number;
+    id?: number;
     title: string;
     description?: string;
     image: string;

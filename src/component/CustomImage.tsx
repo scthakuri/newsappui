@@ -4,7 +4,7 @@ import FastImage from 'react-native-fast-image';
 
 interface ImageProps {
     url : string;
-    style? : StyleProp<ViewStyle>
+    style? : StyleProp<ViewStyle>;
 }
 
 export default function CustomImage(props : ImageProps) {

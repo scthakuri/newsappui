@@ -1,0 +1,1 @@
+export const HEADER_IMAGE_HEIGHT = 800;

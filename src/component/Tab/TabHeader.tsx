@@ -12,7 +12,7 @@ import Animated, {
     interpolateNode,
 } from "react-native-reanimated";
 import MaskedView from "@react-native-community/masked-view";
-import { withTransition } from "react-native-redash";
+import { withTransition } from "react-native-redash/src/v1";
 import { TabModel } from "../Content";
 import Tabs from './Tabs'
 
@@ -32,17 +32,20 @@ interface TabHeaderProps {
     scrollView: RefObject<Animated.ScrollView>;
 }
 
-export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {
+export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {    
     const index = new Value<number>(0);
     const [measurements, setMeasurements] = useState<number[]>(
         new Array(tabs.length).fill(0)
     );
+    
+
     const opacity = transition;
     const indexTransition = withTransition(index);
     const width = interpolateNode(indexTransition, {
         inputRange: tabs.map((_, i) => i),
         outputRange: measurements,
     });
+
     const translateX = interpolateNode(indexTransition, {
         inputRange: tabs.map((_tab, i) => i),
         outputRange: measurements.map((_, i) => {
@@ -60,7 +63,7 @@ export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {
         width,
         borderRadius: 10,
         backgroundColor: "#000",
-        flex: 1,
+        flex: 1
     };
 
     const maskElement = <Animated.View {...{ style }} />;
@@ -82,7 +85,7 @@ export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {
             ),
         [index, tabs, y]
     );
-    
+
     return (
         <Animated.View style={[styles.container, { opacity }]}>
             <Animated.View
@@ -106,15 +109,14 @@ export default ({ transition, y, tabs, scrollView }: TabHeaderProps) => {
                         Platform.OS === "android"
                             ? {
                                 backgroundColor: "transparent",
-                                borderColor: "black",
-                                borderWidth: 1,
+                                borderColor: "#999",
+                                borderWidth: 1
                             }
                             : {},
                     ]}
                 />
             </View>
             {Platform.OS === "ios" && (
-                // see https://github.com/react-native-community/react-native-masked-view/issues/22
                 <MaskedView style={StyleSheet.absoluteFill} maskElement={maskElement}>
                     <Animated.View
                         style={{

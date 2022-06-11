@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Animated from "react-native-reanimated";
-import { onScrollEvent, useValue } from "react-native-redash";
+import { onScrollEvent, useValue } from "react-native-redash/src/v1";
 
 import Content, { defaultTabs } from "../component/Content";
 import Header from "../component/Header";

@@ -1,14 +1,10 @@
 import { StyleSheet, ImageBackground, Text, View } from 'react-native'
 import React from 'react'
+import { NewsProps } from '../../constants'
+import { TimeAgo } from '../../constants/Functions'
 
-interface CardProps {
-    id?: number;
-    title: string;
-    description?: string;
-    image: string;
-}
 
-export default function FullCard(props: CardProps) {
+export default function FullCard(props: NewsProps) {
     return (
         <View style={{
 
@@ -34,8 +30,9 @@ export default function FullCard(props: CardProps) {
                     color: "#fff",
                     position: 'absolute',
                     bottom: 10,
-                    left: 10
-                }}>Top News</Text>
+                    left: 10,
+                    textTransform:"capitalize"
+                }}>{props?.category}</Text>
             </ImageBackground>
 
             <Text style={{
@@ -57,7 +54,7 @@ export default function FullCard(props: CardProps) {
                 fontSize: 12,
                 color: "#999",
                 marginVertical: 7
-            }}>1 Hour Ago</Text>
+            }}>{TimeAgo(props?.published_at)}</Text>
         </View>
     )
 }

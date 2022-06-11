@@ -2,12 +2,12 @@ import React, { RefObject } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 
-import { useValue, withTimingTransition } from "react-native-redash";
+import { useValue, withTimingTransition } from "react-native-redash/src/v1";
 
 import TabHeader from './Tab/TabHeader'
 
 
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { TabModel } from "./Content";
 
 import {
@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
         marginLeft: PADDING,
         flex: 1,
     },
+    menuOptions : {
+        padding : 10,
+        borderColor:"#eee",
+        borderBottomWidth:1
+    }
 });
 
 interface HeaderProps {
@@ -56,6 +61,7 @@ interface HeaderProps {
 export default function Header({ y, tabs, scrollView }: HeaderProps) {
 
     const theme = useTheme();
+    const navigation = useNavigation();
     const toggle = useValue<0 | 1>(0);
     const insets = useSafeAreaInsets();
 
@@ -118,6 +124,7 @@ export default function Header({ y, tabs, scrollView }: HeaderProps) {
                         style={{
                             marginRight: 10
                         }}
+                        onPress={() => navigation.navigate("Language")}
                     >
                         <Image
                             source={images?.[theme.dark ? "dark" : "light"]?.lang}
@@ -141,11 +148,11 @@ export default function Header({ y, tabs, scrollView }: HeaderProps) {
                             />
                         </MenuTrigger>
                         <MenuOptions>
-                            <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                            <MenuOption onSelect={() => alert(`Delete`)} >
-                                <Text style={{ color: 'red' }}>Delete</Text>
+                            <MenuOption style={styles.menuOptions} onSelect={() => alert(`Settings`)} text='Settings' />
+                            <MenuOption style={styles.menuOptions} onSelect={() => alert(`Notices`)} >
+                                <Text style={{ color: 'red' }}>Notices</Text>
                             </MenuOption>
-                            <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+                            <MenuOption style={styles.menuOptions} onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
                         </MenuOptions>
                     </Menu>
                 </View>

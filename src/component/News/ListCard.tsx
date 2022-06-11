@@ -1,16 +1,10 @@
-import { View, Text, StyleProp, ViewStyle } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
 import CustomImage from '../CustomImage';
+import { NewsProps } from '../../constants';
+import { TimeAgo } from '../../constants/Functions';
 
-interface CardProps {
-    id?: number;
-    title: string;
-    description?: string;
-    image: string;
-    style? : StyleProp<ViewStyle>
-}
-
-export default function ListCard(props: CardProps) {
+export default function ListCard(props: NewsProps) {
     return (
         <View style={[{
             flexDirection: 'row',
@@ -33,8 +27,9 @@ export default function ListCard(props: CardProps) {
                 <Text style={{
                     fontSize: 12,
                     color: "#999",
-                    marginVertical: 1
-                }}>Top News</Text>
+                    marginVertical: 1,
+                    textTransform:'capitalize'
+                }}>{props?.category}</Text>
 
                 <Text
                     style={{
@@ -51,7 +46,7 @@ export default function ListCard(props: CardProps) {
                     fontSize: 12,
                     color: "#999",
                     marginVertical: 1
-                }}>1 Hour Ago</Text>
+                }}>{TimeAgo(props?.published_at)}</Text>
             </View>
         </View>
     )

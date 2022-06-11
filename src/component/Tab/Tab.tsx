@@ -22,7 +22,7 @@ interface TabProps {
     onPress?: () => void;
 }
 
-export default ({ name, color, onMeasurement, onPress }: TabProps) => {
+export default ({ name, color, onMeasurement, onPress }: TabProps) => {    
     return (
         <TouchableWithoutFeedback {...{ onPress }}>
             <View

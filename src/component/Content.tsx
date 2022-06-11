@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
 import ListCard from './News/ListCard'
 import LatestNews from './Dashboard/LatestNews'

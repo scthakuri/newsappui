@@ -21,8 +21,8 @@ export default function AppStack() {
                     presentation: 'modal',
                 }}
             >
-                <Stack.Screen name="Dashboard" component={Dashboard} />
                 <Stack.Screen name="Language" component={Language} />
+                <Stack.Screen name="Dashboard" component={Dashboard} />
                 <Stack.Screen name="Settings" component={Settings} />
                 <Stack.Screen name="Single" component={Single} />
             </Stack.Group>
